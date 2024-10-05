@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary bg-dark border-bottom border-body" data-bs-theme="dark"> 
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">HSPA</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul  class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/">Buy</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/rent-property">Rent</a>
+        </li>     
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/add-property">List Property(Free)</a>
+        </li> 
+      </ul>
+      <div class="d-flex" role="search">
+        <div *ngIf="!loggedIn()" class="nav navbar-nav">
+          <div class="nav-item">
+            <a routerLink="/user/register" routerLinkActive="active" class="nav-link">Register</a>
+          </div>
+          <div class="nav-item">
+            <a routerLink="/user/login" routerLinkActive="active"  class="nav-link">LogIn</a>
+          </div>          
+        </div> 
+        <div *ngIf="loggedIn()" class="dro mr-5" ngbDropdown> 
+          <a href="#" ngbDropdownToggle (click)="false" id="gfg">
+            {{userName}}
+          </a>
+          <div ngbDropdownMenu="gfg">
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-techometer-alt"></i> View Dashboard
+            </a>
+            <a href="#" ngbDropdownItem>
+              <i class="fas fa-user-circle"></i> My Profile
+            </a>
+            <a href="#" ngbDropdownItem>
+              <i class="fas fa-key"></i> Change Password
+            </a>
+            <a ngbDropdownItem (click)="userlogOut()">
+              <i class="fas fa-sign-out-alt"></i> LogOut
+            </a>
+          </div>      
+        </div> 
+      </div>
+    </div>
+  </div>
+</nav>
